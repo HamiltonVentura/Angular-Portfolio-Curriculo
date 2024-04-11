@@ -1,8 +1,15 @@
 
 <app-header></app-header>
+<ul style="color:white;font-size: larger;" *ngFor="let dados of conselho">
+
+ <strong>Conselho {{dados.created_all | async}}</strong>
+
+</ul>
+
 
 <main>
     <app-knowledge></app-knowledge>
+
     <app-experiences></app-experiences>
 
     @defer (on viewport) {
@@ -25,4 +32,11 @@
 
 
 <code>observable|async</code>:
+<ul>
+<li>{{foodList}}</li>
+
+<ul style="color:white;font-size: larger;" *ngFor="let item of tarefas">
+{{ item.id}} && {{item.title}}
+</ul>
+</ul>
 

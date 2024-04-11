@@ -1,5 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { subscribe } from 'diagnostics_channel';
+import { Component, OnInit, signal } from '@angular/core';
 import { knowledge } from '../../../interface/knowledge.interface';
+import { HomeService } from '../../pages/home/home.service';
 
 @Component({
   selector: 'app-knowledge',
@@ -8,7 +10,9 @@ import { knowledge } from '../../../interface/knowledge.interface';
   templateUrl: './knowledge.component.html',
   styleUrl: './knowledge.component.scss'
 })
-export class KnowledgeComponent {
+export class KnowledgeComponent implements OnInit {
+
+
   public arrayKnowledge= signal<knowledge[]>([
     {
       src:"../../../../../../../assets/icons/knowledge/html5.svg" ,
@@ -26,5 +30,16 @@ export class KnowledgeComponent {
       src:"../../../../../../../assets/icons/knowledge/angular.svg" ,
       alt: "icone de conhecimento em Angular"
     },
-  ])
+  ]);
+
+  constructor( private homeService:HomeService){}
+
+  ngOnInit() {
+    this.homeService.user$.subscribe({
+      next: (next)=> console.log("valor alterado",next),
+      complete: () =>console.log("completo"),
+    })
+
+    this.homeService.user.set("alteradinho");
+  }
 }
