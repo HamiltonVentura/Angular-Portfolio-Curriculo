@@ -76,32 +76,32 @@ export class HomeComponent implements OnInit {
       complete: ()=> console.log("Completado!"),
     })
 
-    //this.experiencias.pipe(
-      //filter((dados) => dados[0].nome.startsWith("J"))
-    //).subscribe(dado => console.log(dado));
+    this.experiencias.pipe(
+      filter((dados) => dados[0].nome.startsWith("J"))
+    ).subscribe(dado => console.log(dado));
 
-    //this.experiencias.pipe(
-     // filter((x) => x[0].profissao == "programador"))
-      //.subscribe(informacao => console.log(informacao));
+    this.experiencias.pipe(
+     filter((x) => x[0].profissao == "programador"))
+      .subscribe(informacao => console.log(informacao));
 
-    //this.umDadoSingle.pipe(
-     // single((dado: any) => dado.categoria.startsWith("p")))
-      //.subscribe({
-       // next: (dado: any) => console.log(dado),
-        //error: (error: any) => console.error(error)
-      //});
+    this.umDadoSingle.pipe(
+     single((dado: any) => dado.categoria.startsWith("p")))
+      .subscribe({
+       next: (dado: any) => console.log(dado),
+        error: (error: any) => console.error(error)
+      });
 
-    //this.foodList = this.home.foodList();
-    //console.log(this.home.user());
+    this.foodList = this.home.foodList();
+    console.log(this.home.user());
 
-    //this.home.user$.subscribe({
-     // next: (next) => console.log(next),
-      //error: (error) => console.log(error),
-      //complete: () => console.log("BEHAVIOR COMPLETO!"),
-    //}
-   // )
+    this.home.user$.subscribe({
+     next: (next) => console.log(next),
+      error: (error) => console.log(error),
+      complete: () => console.log("BEHAVIOR COMPLETO!"),
+    }
+   )
 
-   // this.home.user.set(' Valor subject alterado');
+   this.home.user.set(' Valor subject alterado');
 
 
 
